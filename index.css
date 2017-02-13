@@ -7,4 +7,18 @@
 	background-repeat:	no-repeat;
 	background-position:	center center;
 	height: 80vh;
+	padding: 10%;
+	font-style: bold;
+}
+.section {
+	max-width: 100%;
+	height: auto;
+}
+.logo {
+	max-height: 50px;
+	width: auto;
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px;
+    margin: 5px;
 }
