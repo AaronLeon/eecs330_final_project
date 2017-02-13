@@ -22,3 +22,11 @@
     padding: 2px;
     margin: 5px;
 }
+
+.material-icons.positive {
+    color: #4caf50;
+}
+
+.material-icons.negative {
+    color: #f44336;
+}
