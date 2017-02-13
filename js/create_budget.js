@@ -14,7 +14,7 @@
         $('#add').click(function(e) {
             $('tbody').append(entryHTML);
             $('select').material_select();
-            attachHandlers();
+            attachEntryHandlers();
         });
     });
 
