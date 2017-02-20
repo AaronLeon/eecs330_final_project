@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../index.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/materialize-css/dist/js/materialize.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../js/home2.js"></script>
 </head>
 <body>
     <div class="navbar-fixed">
@@ -20,7 +20,7 @@
     </div>
     <div class="container">
         <div class="row center-align">
-            <h3>Budgets</h3>
+            <h3>Current Budget</h3>
             <div class="divider"></div>
             <br></br>
             <ul id="budget-list" class="left-align collection">
@@ -30,19 +30,33 @@
                             <h4 class="title"><i class="large material-icons icon-green left">trending_up</i>January</h4>
                             <p>1/1/2017 - 1/31/2017</p>
                         </div>
-                        <div class="col s2 offset-s4">
+                        <div class="col s3 offset-s3">
                                 <h6> 
                                     <br>
-                                    &plus;&nbsp;$1000
+                                    Budget limit: &plus;&nbsp;$<span id="limit">1000</span>
                                     <br>
-                                    &minus;&nbsp;$800
+                                    Money spent: &minus;&nbsp;$<span id="spent">0</span>
                                     <hr>
-                                    &plus;&nbsp;$200
+                                    Savings: &plus;&nbsp;$<span id="savings">1000</span>
                                 </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="progress">
+                            <div class="determinate" style="width: 0%"></div>
                         </div>
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">attach_money</i>
+                <input id="new-expenditure" type="number" placeholder="New Expenditure"/>
+                <!--<label for="daily-expenditure">Daily Expenditure</label>-->
+            </div>
+        </div>
+        <div class="row center-align">
             <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Create a budget</a>
         </div>
 </body>
