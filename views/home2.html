@@ -31,25 +31,33 @@
                             <p>1/1/2017 - 1/31/2017</p>
                         </div>
                         <div class="col s3 offset-s3">
-                                <h6> 
-                                    <br>
-                                    Budget limit: &plus;&nbsp;$<span id="limit">1000</span>
-                                    <br>
-                                    Money spent: &minus;&nbsp;$<span id="spent">0</span>
-                                    <hr>
-                                    Savings: &plus;&nbsp;$<span id="savings">1000</span>
-                                </h6>
+                            <h6> 
+                                <br>
+                                Budget limit: &plus;&nbsp;$<span id="limit">1000</span>
+                                <br>
+                                Money spent: &minus;&nbsp;$<span id="spent">0</span>
+                                <hr>
+                                Savings: &plus;&nbsp;$<span id="savings">1000</span>
+                            </h6>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="progress">
-                            <div class="determinate" style="width: 0%"></div>
+                        <div class="green lighten-3 progress">
+                            <div class="green determinate" style="width: 100%;"></div>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="row">
+            <div class="input-field col s6">
+                <select>
+                    <option value="" disabled selected>Category</option>
+                    <option value="rent">Rent</option>
+                    <option value="food">Food</option>
+                    <option value="recreation">Recreation</option>
+                </select>
+            </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">attach_money</i>
                 <input id="new-expenditure" type="number" placeholder="New Expenditure"/>
