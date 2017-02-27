@@ -5,41 +5,52 @@
 
     $(function() {
         $('select').material_select();
-        $('#new-expenditure').keypress(function(e) {
-            var amount = parseInt($(this).val());
-            if (e.which === 13) {
-                var budgetLimit = parseInt($('#limit').text());
-                var currentSpent = parseInt($('#spent').text());
-                var currentSavings = parseInt($('#savings').text());
-                $('#spent').text(currentSpent + amount);
-                $('#savings').text(currentSavings - amount);
-                var percent = 100 * (budgetLimit - currentSpent - amount) / budgetLimit;
-                
+        var budgetLimit = parseInt($('#limit').text());
 
-                var $progressBarBackground = $('.progress');
-                var $progressBar = $('.progress > .determinate');
-                $progressBar.css('width',  percent + '%');
-                if (percent < 20) {
-                    $progressBarBackground.removeClass('green lighten-3');
-                    $progressBarBackground.removeClass('yellow lighten-4');
-                    $progressBarBackground.addClass('red lighten-3');
+        $('#new-expenditure-form').submit(function(e) {
+            e.preventDefault();
 
-                    $progressBar.removeClass('green');
-                    $progressBar.removeClass('yellow darken-1');
-                    $progressBar.addClass('red');
-                }
-                else if (percent < 50) {
-                    $progressBarBackground.removeClass('green lighten-3');
-                    $progressBarBackground.removeClass('yellow lighten-4');
-                    $progressBarBackground.addClass('yellow lighten-4');
+            var category = $(this).find('#new-expenditure-category').val();
+            var amount = parseInt($(this).find('#new-expenditure').val());
 
-                    $progressBar.removeClass('green');
-                    $progressBar.removeClass('red');
-                    $progressBar.addClass('yellow darken-1');
-                }
+            updateProgressBar(category, amount);
+            updateProgressBar('total', amount)
 
-                $('#new-expenditure').val('');
-            }
+            $('#new-expenditure').val('');
         });
     });
+
+    function updateProgressBar(category, amount) {
+        var categoryLimit = parseInt($('#' + category + '-progress ~ .right > span').text());
+        var currentSavings = parseInt($('label[for="' + category + '-progress"] > span').text());
+
+        currentSavings -= amount;
+        $('label[for="' + category + '-progress"] > span').text(currentSavings);
+
+        var percent = 100 * currentSavings / categoryLimit;
+
+        console.log(category)
+
+        var $progressBarBackground = $('#' + category + '-progress.progress');
+        var $progressBar = $progressBarBackground.find('.determinate');
+        $progressBar.css('width',  percent + '%');
+        if (percent < 20) {
+            $progressBarBackground.removeClass('green lighten-3');
+            $progressBarBackground.removeClass('yellow lighten-4');
+            $progressBarBackground.addClass('red lighten-3');
+
+            $progressBar.removeClass('green');
+            $progressBar.removeClass('yellow darken-1');
+            $progressBar.addClass('red');
+        }
+        else if (percent < 50) {
+            $progressBarBackground.removeClass('green lighten-3');
+            $progressBarBackground.removeClass('yellow lighten-4');
+            $progressBarBackground.addClass('yellow lighten-4');
+
+            $progressBar.removeClass('green');
+            $progressBar.removeClass('red');
+            $progressBar.addClass('yellow darken-1');
+        }
+    }
 }());
